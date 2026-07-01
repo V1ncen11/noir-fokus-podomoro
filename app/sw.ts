@@ -1,14 +1,14 @@
 import { defaultCache } from "@serwist/next/worker";
-import type { PrecacheEntry } from "@serwist/precaching";
-import { Serwist } from "@serwist/sw";
+import type { PrecacheEntry, SerwistGlobalConfig } from "serwist";
+import { Serwist } from "serwist";
 
 declare global {
-  interface WorkerGlobalScope extends ServiceWorkerGlobalScope {
+  interface WorkerGlobalScope extends SerwistGlobalConfig {
     __SW_MANIFEST: (PrecacheEntry | string)[] | undefined;
   }
 }
 
-declare const self: WorkerGlobalScope;
+declare const self: ServiceWorkerGlobalScope;
 
 const serwist = new Serwist({
   precacheEntries: self.__SW_MANIFEST,
