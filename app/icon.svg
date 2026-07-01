@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="50" fill="#ffffff" />
+  <g fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Abstract wavy N intersecting with an F-like structure -->
+    <path d="M 30 75 C 30 35, 45 25, 50 50 C 55 75, 70 65, 70 25" />
+    <path d="M 45 40 C 55 40, 65 35, 75 30" />
+    <path d="M 50 55 C 60 55, 65 52, 70 50" />
+  </g>
+</svg>

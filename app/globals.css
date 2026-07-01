@@ -1,26 +1,81 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-bg-main: var(--bg-main);
+  --color-bg-modal: var(--bg-modal);
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  --color-text-faint: var(--text-faint);
+  --color-border-main: var(--border-main);
+  --color-border-subtle: var(--border-subtle);
+  --color-card-bg: var(--card-bg);
+  --color-backdrop: var(--backdrop);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root, [data-theme="noir"] {
+  --bg-main: #050505;
+  --bg-modal: #0a0a0a;
+  --text-main: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.5);
+  --text-faint: rgba(255, 255, 255, 0.2);
+  --border-main: rgba(255, 255, 255, 0.15);
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --card-bg: rgba(255, 255, 255, 0.02);
+  --backdrop: rgba(0, 0, 0, 0.8);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+[data-theme="paper"] {
+  --bg-main: #fafafa;
+  --bg-modal: #ffffff;
+  --text-main: #111111;
+  --text-muted: rgba(17, 17, 17, 0.6);
+  --text-faint: rgba(17, 17, 17, 0.3);
+  --border-main: rgba(17, 17, 17, 0.2);
+  --border-subtle: rgba(17, 17, 17, 0.08);
+  --card-bg: rgba(17, 17, 17, 0.03);
+  --backdrop: rgba(255, 255, 255, 0.85);
+}
+
+[data-theme="rose"] {
+  --bg-main: #FDF6F8;
+  --bg-modal: #F9EDF1;
+  --text-main: #5C3A46;
+  --text-muted: rgba(92, 58, 70, 0.6);
+  --text-faint: rgba(92, 58, 70, 0.3);
+  --border-main: rgba(92, 58, 70, 0.2);
+  --border-subtle: rgba(92, 58, 70, 0.08);
+  --card-bg: rgba(92, 58, 70, 0.04);
+  --backdrop: rgba(253, 246, 248, 0.85);
+}
+
+@layer base {
+  *, ::before, ::after {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 400ms;
+  }
+
+  html, body {
+    background-color: var(--bg-main) !important;
+    color: var(--text-main) !important;
+    overflow: hidden !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+
+  ::-webkit-scrollbar {
+    display: none !important;
+    width: 0px !important;
+    height: 0px !important;
+    background: transparent !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  pointer-events: none;
 }
